@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Group Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- LEFT: INPUT SECTION -->
+    <div class="input-section">
+      <h2>Student Group Generator</h2>
+
+      <label>Enter student names (separated by commas or new lines):</label>
+      <textarea id="names" rows="12" placeholder="e.g. GEORGE PHIRI, DENIS BAYFORD"></textarea>
+
+      <label>Or upload a CSV or XLSX file:</label>
+      <input type="file" id="fileInput" accept=".csv,.xlsx" onchange="handleFile(event)">
+
+      <label>Enter group size:</label>
+      <input type="number" id="groupSize" min="1" placeholder="e.g. 3">
+
+      <div class="btn-container">
+        <button onclick="generateGroups()">Generate Groups</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: OUTPUT SECTION -->
+    <div class="output-section">
+      <h2>Generated Groups</h2>
+      <div id="summary"></div>
+      <div id="output"></div>
+      <button onclick="saveDocx()">Save as DOCX</button>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.4.0/build/index.umd.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
