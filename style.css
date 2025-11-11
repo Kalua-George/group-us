@@ -5,6 +5,7 @@ html, body {
   padding: 0;
   font-family: Arial, sans-serif;
   background: #f2f2f2;
+  overflow: hidden;
 }
 
 .container {
@@ -114,18 +115,42 @@ button:hover {
   border-radius: 4px;
 }
 
+/* ==================================
+   Mobile: vertical (up/down swipe)
+   ================================== */
 @media (max-width: 900px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   .container {
     flex-direction: column;
+    height: auto;
+    width: 100vw;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
   }
+
   .input-section, .output-section {
     flex: none;
     width: 100%;
-    height: auto;
-    border-right: none;
+    min-height: 100vh;
+    border: none;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .input-section {
     border-bottom: 2px solid #ddd;
   }
+
   .output-section button {
     width: 80%;
+  }
+
+  /* Smooth vertical scroll */
+  .container {
+    scroll-behavior: smooth;
   }
 }
